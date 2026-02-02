@@ -5,10 +5,9 @@ const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
 
 if (!supabaseUrl || !supabaseAnonKey) {
-  console.warn('⚠️ Supabase配置缺失！请在 .env.local 中配置 VITE_SUPABASE_URL 和 VITE_SUPABASE_ANON_KEY')
+  console.warn('⚠️ Supabase配置缺失！功能将受限。请在 .env.local 中配置 VITE_SUPABASE_URL 和 VITE_SUPABASE_ANON_KEY')
 }
 
-export const supabase = createClient<Database>(
-  supabaseUrl || '',
-  supabaseAnonKey || ''
-)
+export const supabase = (supabaseUrl && supabaseAnonKey)
+  ? createClient<Database>(supabaseUrl, supabaseAnonKey)
+  : null

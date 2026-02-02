@@ -34,6 +34,13 @@ export const useAuthStore = create<AuthState>((set) => ({
       return
     }
 
+    // 检测 Supabase 客户端是否存在
+    if (!supabase) {
+      console.warn('Supabase client not initialized, skipping auth')
+      set({ initialized: true, loading: false, user: null, session: null })
+      return
+    }
+
     // 设置超时，避免网络问题导致页面卡住
     const timeout = new Promise<null>((resolve) => {
       setTimeout(() => resolve(null), 3000) // 3秒超时
@@ -73,7 +80,9 @@ export const useAuthStore = create<AuthState>((set) => ({
       set({ user: null, session: null })
       return
     }
-    await supabase.auth.signOut()
+    if (supabase) {
+      await supabase.auth.signOut()
+    }
     set({ user: null, session: null })
   },
 }))

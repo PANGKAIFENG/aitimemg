@@ -17,6 +17,10 @@ export function LoginPage() {
   const navigate = useNavigate()
 
   const handleEmailAuth = async (values: LoginFormValues) => {
+    if (!supabase) {
+      message.error('系统未配置数据库服务，无法登录')
+      return
+    }
     setLoading(true)
     try {
       if (isLogin) {
@@ -43,6 +47,10 @@ export function LoginPage() {
   }
 
   const handleGoogleLogin = async () => {
+    if (!supabase) {
+      message.error('系统未配置数据库服务，无法登录')
+      return
+    }
     try {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
