@@ -1,0 +1,502 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap');
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+}
+
+:root {
+  /* 底色 - 骨白，禁止纯白 */
+  --color-base: #FDFCFB;
+  --color-surface: #FFFFFF;
+
+  /* 主色 */
+  --color-primary: #3B82F6;
+  --color-primary-light: rgba(59, 130, 246, 0.1);
+  --color-primary-glow: rgba(59, 130, 246, 0.4);
+
+  /* 任务分组颜色 - 基础色 */
+  --color-urgent-important-base: #EF4444;
+  --color-important-base: #F59E0B;
+  --color-urgent-base: #3B82F6;
+  --color-neither-base: #10B981;
+
+  /* 任务分组颜色 - 背景色 (Pastel) */
+  --color-urgent-important-bg: rgba(254, 226, 226, 0.6);
+  /* red-100/50 */
+  --color-important-bg: rgba(254, 243, 199, 0.6);
+  /* amber-100/50 */
+  --color-urgent-bg: rgba(219, 234, 254, 0.6);
+  /* blue-100/50 */
+  --color-neither-bg: rgba(209, 250, 229, 0.6);
+  /* emerald-100/50 */
+
+  /* 任务分组颜色 - 边框色 */
+  --color-urgent-important-border: rgba(252, 165, 165, 0.4);
+  /* red-300/40 */
+  --color-important-border: rgba(252, 211, 77, 0.4);
+  /* amber-300/40 */
+  --color-urgent-border: rgba(147, 197, 253, 0.4);
+  /* blue-300/40 */
+  --color-neither-border: rgba(110, 231, 183, 0.4);
+  /* emerald-300/40 */
+
+  --color-urgent-important: var(--color-urgent-important-base);
+  --color-important: var(--color-important-base);
+  --color-urgent: var(--color-urgent-base);
+  --color-neither: var(--color-neither-base);
+
+  /* 中性色 */
+  --color-bg: #FDFCFB;
+  --color-sidebar: #FDFCFB;
+  --color-white: #FFFFFF;
+  --color-gray-50: #F9FAFB;
+  --color-gray-100: #F3F4F6;
+  --color-gray-200: #E5E7EB;
+  --color-gray-300: #D1D5DB;
+  --color-gray-400: #9CA3AF;
+  --color-gray-500: #6B7280;
+  --color-gray-600: #4B5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1F2937;
+
+  /* 状态色 */
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-danger: #EF4444;
+  --color-danger-glow: rgba(239, 68, 68, 0.4);
+
+  /* 延期任务颜色 */
+  --color-overdue: #F59E0B;
+  --color-overdue-bg: rgba(245, 158, 11, 0.08);
+
+  /* 字体 */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-mono: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+
+  /* 阴影系统 - 深而不黑 */
+  --shadow-sm: 0 4px 20px -6px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 10px 40px -12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.12);
+  --shadow-xl: 0 35px 60px -15px rgba(0, 0, 0, 0.15);
+
+  /* 圆角系统 */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-2xl: 40px;
+  --radius-full: 9999px;
+
+  /* 时间轴 */
+  --timeline-row-height: 60px;
+  /* 与 Timeline.tsx 中的 HOUR_HEIGHT 保持一致 */
+  --timeline-label-width: 60px;
+
+  /* 动画 */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow: 400ms ease;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-gray-800);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* ============================================
+   毛玻璃效果
+   ============================================ */
+.glass {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.glass-light {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* ============================================
+   渐变文字
+   ============================================ */
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-primary), #8B5CF6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================
+   Logo 样式
+   ============================================ */
+.logo {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.5rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, var(--color-primary), #8B5CF6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================
+   任务卡片样式 - 无边框，用阴影 + 左侧色条
+   ============================================ */
+.task-card {
+  background: var(--color-surface);
+  /* 左侧直角，右侧圆角 - 形成矩形色条效果 */
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+  cursor: grab;
+  /* 左侧色条基础样式 - 默认透明，由 group 类覆盖 */
+  border-left: 4px solid transparent;
+  /* 确保 overflow hidden，如果有背景色可能需要，但这里主要是为了圆角 */
+  overflow: hidden;
+}
+
+.task-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+  /* filter: brightness(0.98); 移除变暗，保持干净 */
+}
+
+.task-card:active {
+  cursor: grabbing;
+}
+
+.task-card.dragging {
+  opacity: 0.9;
+  /* 拖拽时稍微不透明一点，因为有阴影 */
+  background: var(--color-surface);
+  box-shadow: var(--shadow-lg);
+  transform: scale(1.02);
+  /* 微微放大更有手感 */
+  z-index: 100 !important;
+}
+
+.task-card.done {
+  opacity: 0.6;
+  /* 已完成的任务可以让背景变灰一点点，或者保持不变由内部斜纹处理 */
+  background: var(--color-gray-50);
+}
+
+.task-card.done .task-title {
+  text-decoration: line-through;
+  color: var(--color-gray-400);
+}
+
+
+/* 分组颜色（艾森豪威尔矩阵四象限） - 使用左侧色条方案 */
+.task-card.group-urgent_important {
+  border-left-color: var(--color-urgent-important-base);
+}
+
+.task-card.group-important {
+  border-left-color: var(--color-important-base);
+}
+
+.task-card.group-urgent {
+  border-left-color: var(--color-urgent-base);
+}
+
+.task-card.group-neither {
+  border-left-color: var(--color-neither-base);
+}
+
+/* ============================================
+   已完成任务斜纹背景
+   ============================================ */
+.pattern-stripes {
+  background-image: repeating-linear-gradient(-45deg,
+      var(--color-gray-100),
+      var(--color-gray-100) 5px,
+      var(--color-gray-200) 5px,
+      var(--color-gray-200) 10px);
+}
+
+/* ============================================
+   时间轴样式
+   ============================================ */
+.timeline-row {
+  height: var(--timeline-row-height);
+  border-top: 1px solid var(--color-gray-100);
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+}
+
+/* 移除半点行样式，按竞品参考只保留整点 */
+
+.timeline-label {
+  width: var(--timeline-label-width);
+  font-size: 11px;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  color: var(--color-gray-400);
+  text-align: right;
+  padding-right: 12px;
+  position: absolute;
+  left: 0;
+  top: -7px;
+  /* 对齐横向线 */
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* 当前时间线 */
+.current-time-line {
+  position: absolute;
+  left: var(--timeline-label-width);
+  right: 0;
+  height: 2px;
+  background: var(--color-danger);
+  z-index: 100;
+}
+
+.current-time-line::before {
+  content: '';
+  position: absolute;
+  left: -4px;
+  top: -3px;
+  width: 8px;
+  height: 8px;
+  background: var(--color-danger);
+  border-radius: 50%;
+}
+
+/* ============================================
+   容量进度条
+   ============================================ */
+.capacity-bar {
+  height: 4px;
+  background: var(--color-gray-200);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.capacity-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.capacity-fill.green {
+  background: linear-gradient(90deg, #10B981, #34D399);
+}
+
+.capacity-fill.yellow {
+  background: linear-gradient(90deg, #F59E0B, #FBBF24);
+}
+
+.capacity-fill.red {
+  background: linear-gradient(90deg, #EF4444, #F87171);
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.4);
+}
+
+/* ============================================
+   滚动条样式
+   ============================================ */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-gray-200);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gray-300);
+}
+
+/* 自定义滚动条类 */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--color-gray-200);
+  border-radius: 2px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gray-300);
+}
+
+/* 隐藏滚动条 */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ============================================
+   标签高亮
+   ============================================ */
+.tag-highlight {
+  /* 移除原有的高亮样式，保持与普通文本一致 */
+  background: transparent;
+  color: inherit;
+  font-weight: normal;
+}
+
+/* ============================================
+   动画
+   ============================================ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn var(--transition-normal) ease-out;
+}
+
+.animate-slide-up {
+  animation: slideUp var(--transition-normal) ease-out;
+}
+
+.animate-pulse {
+  animation: pulse 2s infinite;
+}
+
+/* ============================================
+   AI 机器人标签样式 (Phase 1.6)
+   ============================================ */
+
+/* AI 全自动 - 金属质感 + 扫光 */
+.task-card.executor-ai_auto {
+  background: linear-gradient(135deg, #f3f4f6 0%, #d1d5db 50%, #f3f4f6 100%);
+  border: 1px solid rgba(156, 163, 175, 0.3);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.task-card.executor-ai_auto::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 300%;
+  height: 300%;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0) 45%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 55%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shine 4s infinite;
+  pointer-events: none;
+}
+
+/* AI 协作 - 紫色微光边框 */
+.task-card.executor-ai_copilot {
+  border: 1.5px solid #d8b4fe;
+  background: var(--color-surface);
+  box-shadow: 0 0 10px rgba(167, 139, 250, 0.15);
+}
+
+.task-card.executor-ai_copilot:hover {
+  box-shadow: 0 0 15px rgba(167, 139, 250, 0.25);
+}
+
+/* 纯人工 - 默认样式 (蓝色左边框已在 .task-card.group-... 中处理) */
+
+@keyframes shine {
+  0% { transform: translate(-30%, -30%) rotate(0deg); }
+  20% { transform: translate(10%, 10%) rotate(0deg); }
+  100% { transform: translate(10%, 10%) rotate(0deg); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+.icon-twinkle {
+  display: inline-block;
+  animation: twinkle 2s infinite ease-in-out;
+}
+
+/* ============================================
+   Contenteditable Placeholder
+   ============================================ */
+[contenteditable][data-placeholder]:empty::before {
+  content: attr(data-placeholder);
+  color: var(--color-gray-400);
+  pointer-events: none;
+}
+
+[contenteditable]:focus {
+  outline: none;
+}
+
+[contenteditable] img {
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 8px;
+  margin: 8px 0;
+  display: block;
+}
