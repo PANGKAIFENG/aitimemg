@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build Output
+dist/
+build/
+.output/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment Variables (Sensitive Data - DO NOT COMMIT)
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# Editor/IDE
+.DS_Store
+.vscode/
+.idea/
+*.swp
+
+# Temporal Specific
+temporal/aliyun-fc/api/.fc/
+temporal/aliyun-fc/api/node_modules/

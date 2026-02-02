@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>项目管理基础 Mock</title>
+    <style>
+        :root {
+            --bg-color: #f3f4f6;
+            --card-bg: #ffffff;
+            --text-primary: #111827;
+            --text-secondary: #6b7280;
+            --border-color: #e5e7eb;
+            --primary-color: #10b981;
+            --hover-bg: #f9fafb;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 20px;
+            color: var(--text-primary);
+        }
+
+        .container {
+            display: flex;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .mock-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 16px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            flex: 1;
+        }
+
+        h3 {
+            margin-top: 0;
+            font-size: 14px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+            margin-bottom: 16px;
+        }
+
+        /* 1. Project List */
+        .project-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .project-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.1s;
+        }
+
+        .project-item:hover {
+            background: var(--hover-bg);
+        }
+
+        .project-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .color-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .badge {
+            font-size: 12px;
+            color: var(--text-secondary);
+            background: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .more-btn {
+            color: var(--text-secondary);
+            cursor: pointer;
+            visibility: hidden;
+        }
+
+        .project-item:hover .more-btn {
+            visibility: visible;
+        }
+
+        .archived-header {
+            margin-top: 16px;
+            padding-top: 8px;
+            border-top: 1px dashed var(--border-color);
+            color: var(--text-secondary);
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+        }
+
+        /* 2. Task Detail Selector */
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .label {
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: var(--text-secondary);
+        }
+
+        .select-box {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .dropdown-menu {
+            margin-top: 4px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background: #fff;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+
+        .dropdown-item {
+            padding: 8px 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .dropdown-item:hover {
+            background: var(--hover-bg);
+        }
+
+        .create-new {
+            border-top: 1px solid var(--border-color);
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        /* 3. Swimlane Config */
+        .lane-config {
+            border: 2px dashed var(--primary-color);
+            background: #ecfdf5;
+            padding: 12px;
+            border-radius: 6px;
+        }
+        
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- 1. Side Bar Project List -->
+    <div class="mock-section" style="max-width: 250px;">
+        <h3>📁 项目管理</h3>
+        <ul class="project-list">
+            <li class="project-item">
+                <div class="project-info">
+                    <span class="color-dot" style="background: #10b981;"></span>
+                    <span>智能白板</span>
+                </div>
+                <div class="right-info">
+                    <span class="badge">12</span>
+                    <span class="more-btn">···</span>
+                </div>
+            </li>
+            <li class="project-item">
+                <div class="project-info">
+                    <span class="color-dot" style="background: #3b82f6;"></span>
+                    <span>日常事务</span>
+                </div>
+                <div class="right-info">
+                    <span class="badge">8</span>
+                    <span class="more-btn">···</span>
+                </div>
+            </li>
+            <li class="project-item">
+                <div class="project-info">
+                    <span class="color-dot" style="background: #eab308;"></span>
+                    <span>技术优化</span>
+                </div>
+                <div class="right-info">
+                    <span class="badge">5</span>
+                    <span class="more-btn">···</span>
+                </div>
+            </li>
+        </ul>
+        
+        <div class="archived-header">
+            <span>▶</span> 📂 已归档 (2)
+        </div>
+    </div>
+
+    <!-- 2. Task Detail Select -->
+    <div class="mock-section" style="max-width: 300px;">
+        <h3>📝 任务详情</h3>
+        <div class="form-group">
+            <label class="label">任务标题</label>
+            <input type="text" value="设计登录页" class="select-box" style="cursor: text;">
+        </div>
+        <div class="form-group">
+            <label class="label">所属项目</label>
+            <div class="select-box">
+                <div class="project-info">
+                    <span class="color-dot" style="background: #10b981;"></span>
+                    <span>智能白板</span>
+                </div>
+                <span>▼</span>
+            </div>
+            <!-- Expanded Dropdown Simulation -->
+            <div class="dropdown-menu">
+                <div class="dropdown-item">
+                    <span class="color-dot" style="background: #10b981;"></span> 智能白板
+                </div>
+                <div class="dropdown-item">
+                    <span class="color-dot" style="background: #3b82f6;"></span> 日常事务
+                </div>
+                <div class="dropdown-item create-new">
+                    ➕ 新建项目...
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Lane Config -->
+    <div class="mock-section" style="max-width: 300px;">
+        <h3>⚙️ 泳道配置</h3>
+        <div class="lane-config">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                <strong>泳道内容过滤</strong>
+                <span style="color:red; cursor:pointer;">[×] 关闭</span>
+            </div>
+            <div class="select-box">
+                <div class="project-info">
+                    <span class="color-dot" style="background: #10b981;"></span>
+                    <span>智能白板</span>
+                </div>
+                <span>▼</span>
+            </div>
+            <p style="font-size: 12px; color: #666; margin-top:8px;">
+                提示：绑定项目后，此处仅显示该关联项目的任务。
+            </p>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

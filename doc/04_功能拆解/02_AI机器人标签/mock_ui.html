@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 机器人标签 Mock (3 Types)</title>
+    <style>
+        :root {
+            --bg-color: #f8fafc;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 40px;
+            color: var(--text-primary);
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 6px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Base Card */
+        .task-card {
+            padding: 12px 16px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            position: relative;
+            margin-bottom: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            transition: transform 0.2s;
+        }
+
+        .task-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 1. Human (纯人工) */
+        .card-human {
+            background: #fff;
+            border-left: 4px solid #3b82f6;
+            /* Blue */
+            border-top: 1px solid #e2e8f0;
+            border-right: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        /* 2. AI Co-pilot (AI 协作) */
+        .card-copilot {
+            background: #fff;
+            border: 1px solid #d8b4fe;
+            /* Light Purple */
+            /* Purple Glow */
+            box-shadow: 0 0 0 1px rgba(168, 85, 247, 0.4), 0 4px 6px -1px rgba(168, 85, 247, 0.1);
+        }
+
+        .icon-copilot {
+            color: #9333ea;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.6;
+                transform: scale(0.9);
+            }
+        }
+
+        /* 3. AI Auto (全自动) */
+        .card-auto {
+            background: linear-gradient(135deg, #f1f5f9 0%, #cbd5e1 100%);
+            /* Metallic */
+            border: 1px solid #94a3b8;
+            overflow: hidden;
+        }
+
+        /* Metallic Shine */
+        .card-auto::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+            transform: skewX(-20deg);
+            animation: shine 4s infinite;
+        }
+
+        @keyframes shine {
+            0% {
+                left: -100%;
+            }
+
+            20% {
+                left: 200%;
+            }
+
+            100% {
+                left: 200%;
+            }
+        }
+
+        /* Content Styles */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .title {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .tags {
+            display: flex;
+            gap: 6px;
+        }
+
+        .tag {
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background: #f1f5f9;
+            color: #64748b;
+        }
+
+        .tag.blue {
+            background: #eff6ff;
+            color: #2563eb;
+        }
+
+        .tag.purple {
+            background: #faf5ff;
+            color: #9333ea;
+        }
+
+        .tag.metal {
+            background: #e2e8f0;
+            color: #475569;
+            border: 1px solid #cbd5e1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- 1. Human -->
+        <div>
+            <h2>1. 纯人工 (Human) <span>👤</span></h2>
+            <div class="task-card card-human">
+                <div class="header">
+                    <span>10:00 - 11:00</span>
+                    <span>Created by Me</span>
+                </div>
+                <div class="title">产品需求评审会</div>
+                <div class="tags">
+                    <span class="tag blue">#会议</span>
+                </div>
+            </div>
+            <p style="font-size:12px; color:#666;">标准样式，强调人的主导性。</p>
+        </div>
+
+        <!-- 2. AI Co-pilot -->
+        <div>
+            <h2>2. AI 协作 (Co-pilot) <span>✨</span></h2>
+            <div class="task-card card-copilot">
+                <div class="header">
+                    <span>14:00 - 15:30</span>
+                    <span class="icon-copilot">✨ Co-pilot</span>
+                </div>
+                <div class="title">撰写 Q1 技术规划方案</div>
+                <div class="tags">
+                    <span class="tag purple">AI 辅助写作</span>
+                    <span class="tag">进行中</span>
+                </div>
+            </div>
+            <p style="font-size:12px; color:#666;">紫色微光边框，暗示有"魔法"加持，但仍需人参与。</p>
+        </div>
+
+        <!-- 3. AI Auto -->
+        <div>
+            <h2>3. 全自动 (AI Auto) <span>🤖</span></h2>
+            <div class="task-card card-auto">
+                <div class="header">
+                    <span>02:00 - 02:05</span>
+                    <span>🤖 Auto-Run</span>
+                </div>
+                <div class="title">生成销售日结报表</div>
+                <div class="tags">
+                    <span class="tag metal">Running...</span>
+                </div>
+            </div>
+            <p style="font-size:12px; color:#666;">金属质感+扫光动画，暗示机器自动运行，坚固可靠。</p>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
