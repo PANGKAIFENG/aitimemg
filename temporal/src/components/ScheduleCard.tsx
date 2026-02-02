@@ -256,11 +256,13 @@ export function ScheduleCard({
                                             '<span class="tag-highlight">【$1】</span>'
                                         ),
                                     }}
+                                    className="truncate"
                                     style={{
+                                        flex: 1,
+                                        minWidth: 0,
                                         overflow: 'hidden',
                                         textOverflow: 'ellipsis',
-                                        minWidth: 0, // Allow flex child to shrink below content size
-                                        flex: 1,     // Ensure it takes available space
+                                        whiteSpace: 'nowrap',
                                     }}
                                 />
                                 {isOverdue && (
@@ -338,8 +340,8 @@ export function ScheduleCard({
                                         lineHeight: 1.3,
                                     }}
                                 >
-                                    {task.executor_type === 'ai_auto' && <span title="AI全自动" style={{ marginRight: 4, flexShrink: 0 }}>🤖</span>}
-                                    {task.executor_type === 'ai_copilot' && <span className="icon-twinkle" title="AI协作" style={{ marginRight: 4, flexShrink: 0 }}>✨</span>}
+                                    {task.executor_type === 'ai_auto' && <span title="AI全自动" style={{ marginRight: 4, flexShrink: 0, height: 20 }}>🤖</span>}
+                                    {task.executor_type === 'ai_copilot' && <span className="icon-twinkle" title="AI协作" style={{ marginRight: 4, flexShrink: 0, height: 20 }}>✨</span>}
                                     <span
                                         dangerouslySetInnerHTML={{
                                             __html: task.title.replace(
