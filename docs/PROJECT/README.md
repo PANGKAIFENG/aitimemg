@@ -13,6 +13,8 @@
 - `研发流程与发布规范.md`
 - `GitHub仓库设置操作清单.md`
 - `发布Runbook.md`
+- `需求开发操作手册.md`
+- `.honeycomb/capabilities-local/worktree-playbook.md`
 
 它应承接：
 
